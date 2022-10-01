@@ -97,7 +97,7 @@ backtrace = { version = "0.3", optional = true }
 unicode-width = { version = "0.1.9", optional = true }
 
 [dev-dependencies]
-trybuild = "1.0.18"
+trybuild = "1.0.65"
 rustversion = "1"
 # Cutting out `filesystem` feature
 trycmd = { version = "0.13", default-features = false, features = ["color-auto", "diff", "examples"] }
