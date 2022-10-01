@@ -120,7 +120,7 @@ dependencies = [
  "humantime",
  "rustversion",
  "shlex",
- "snapbox",
+ "snapbox 0.4.0",
  "static_assertions",
  "strsim",
  "termcolor",
@@ -151,7 +151,7 @@ dependencies = [
  "os_str_bytes",
  "pathdiff",
  "shlex",
- "snapbox",
+ "snapbox 0.4.0",
  "trycmd",
  "unicode-xid",
 ]
@@ -162,7 +162,7 @@ version = "4.0.0-alpha.0"
 dependencies = [
  "clap 4.0.0-alpha.0",
  "clap_complete",
- "snapbox",
+ "snapbox 0.4.0",
 ]
 
 [[package]]
@@ -189,7 +189,7 @@ version = "0.1.10"
 dependencies = [
  "clap 4.0.0-alpha.0",
  "roff",
- "snapbox",
+ "snapbox 0.4.0",
 ]
 
 [[package]]
@@ -827,6 +827,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "snapbox"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f98a96656eecd1621c5830831b48eb6903a9f86aaeb61b9f358a9bd462414ddd"
+dependencies = [
+ "concolor",
+ "normalize-line-endings",
+ "similar",
+ "snapbox-macros",
+ "yansi",
+]
+
+[[package]]
 name = "snapbox-macros"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -942,7 +955,7 @@ dependencies = [
  "rayon",
  "serde",
  "shlex",
- "snapbox",
+ "snapbox 0.3.3",
  "toml_edit",
 ]
 
