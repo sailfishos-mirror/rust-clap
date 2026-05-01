@@ -72,7 +72,7 @@ fn generate_inner(p: &Command, previous_command_name: &str) -> String {
     debug!("generate_inner");
 
     let command_names = if previous_command_name.is_empty() {
-        vec![p.get_bin_name().expect(INTERNAL_ERROR_MSG).to_string()]
+        vec![p.get_bin_name().expect(INTERNAL_ERROR_MSG).to_owned()]
     } else {
         p.get_name_and_visible_aliases()
             .into_iter()

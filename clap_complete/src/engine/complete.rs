@@ -577,9 +577,9 @@ fn subcommands(p: &clap::Command) -> Vec<CompletionCandidate> {
         .flat_map(|sc| {
             sc.get_name_and_visible_aliases()
                 .into_iter()
-                .map(|s| populate_command_candidate(CompletionCandidate::new(s.to_string()), p, sc))
+                .map(|s| populate_command_candidate(CompletionCandidate::new(s.to_owned()), p, sc))
                 .chain(sc.get_aliases().map(|s| {
-                    populate_command_candidate(CompletionCandidate::new(s.to_string()), p, sc)
+                    populate_command_candidate(CompletionCandidate::new(s.to_owned()), p, sc)
                         .hide(true)
                 }))
         })

@@ -137,7 +137,7 @@ fn test_subsubcommand() {
         Opt3 {
             all: true,
             cmd: Sub2::Foo {
-                file: "lib.rs".to_string(),
+                file: "lib.rs".to_owned(),
                 cmd: Sub3::Quux {}
             }
         },

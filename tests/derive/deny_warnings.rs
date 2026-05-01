@@ -30,7 +30,7 @@ fn warning_never_struct() {
     }
     assert_eq!(
         Opt {
-            s: "foo".to_string()
+            s: "foo".to_owned()
         },
         Opt::try_parse_from(["test", "foo"]).unwrap()
     );
@@ -47,7 +47,7 @@ fn warning_never_enum() {
     }
     assert_eq!(
         Opt::Foo {
-            s: "foo".to_string()
+            s: "foo".to_owned()
         },
         Opt::try_parse_from(["test", "foo", "foo"]).unwrap()
     );

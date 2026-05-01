@@ -466,7 +466,7 @@ fn value_parser_invalid() {
                     if s != "env" {
                         Ok(s.to_owned())
                     } else {
-                        Err("is equal".to_string())
+                        Err("is equal".to_owned())
                     }
                 }),
         )

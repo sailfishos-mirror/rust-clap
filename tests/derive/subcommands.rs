@@ -46,7 +46,7 @@ fn test_fetch() {
         Opt::Fetch {
             all: true,
             force: false,
-            repo: "origin".to_string()
+            repo: "origin".to_owned()
         },
         Opt::try_parse_from(["test", "fetch", "--all", "origin"]).unwrap()
     );
@@ -54,7 +54,7 @@ fn test_fetch() {
         Opt::Fetch {
             all: false,
             force: true,
-            repo: "origin".to_string()
+            repo: "origin".to_owned()
         },
         Opt::try_parse_from(["test", "fetch", "-f", "origin"]).unwrap()
     );
@@ -101,7 +101,7 @@ enum Opt2 {
 fn test_hyphenated_subcommands() {
     assert_eq!(
         Opt2::DoSomething {
-            arg: "blah".to_string()
+            arg: "blah".to_owned()
         },
         Opt2::try_parse_from(["test", "do-something", "blah"]).unwrap()
     );
@@ -148,14 +148,14 @@ enum Opt4 {
 fn test_tuple_commands() {
     assert_eq!(
         Opt4::Add(Add {
-            file: "f".to_string()
+            file: "f".to_owned()
         }),
         Opt4::try_parse_from(["test", "add", "f"]).unwrap()
     );
     assert_eq!(Opt4::Init, Opt4::try_parse_from(["test", "init"]).unwrap());
     assert_eq!(
         Opt4::Fetch(Fetch {
-            remote: "origin".to_string()
+            remote: "origin".to_owned()
         }),
         Opt4::try_parse_from(["test", "fetch", "origin"]).unwrap()
     );

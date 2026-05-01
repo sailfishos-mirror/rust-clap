@@ -230,7 +230,7 @@ fn required_with_option_type() {
 #[test]
 fn ignore_qualified_option_type() {
     fn parser(s: &str) -> Result<Option<String>, std::convert::Infallible> {
-        Ok(Some(s.to_string()))
+        Ok(Some(s.to_owned()))
     }
 
     #[derive(Parser, PartialEq, Debug)]
@@ -410,7 +410,7 @@ fn vec_type_with_multiple_values_only() {
 #[test]
 fn ignore_qualified_vec_type() {
     fn parser(s: &str) -> Result<Vec<String>, std::convert::Infallible> {
-        Ok(vec![s.to_string()])
+        Ok(vec![s.to_owned()])
     }
 
     #[derive(Parser, PartialEq, Debug)]

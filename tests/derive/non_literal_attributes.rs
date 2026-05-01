@@ -50,7 +50,7 @@ fn test_slice() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
+            level: "1".to_owned(),
             files: Vec::new(),
             values: vec![],
         },
@@ -59,7 +59,7 @@ fn test_slice() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
+            level: "1".to_owned(),
             files: Vec::new(),
             values: vec![],
         },
@@ -68,7 +68,7 @@ fn test_slice() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
+            level: "1".to_owned(),
             files: Vec::new(),
             values: vec![],
         },
@@ -77,7 +77,7 @@ fn test_slice() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
+            level: "1".to_owned(),
             files: Vec::new(),
             values: vec![],
         },
@@ -90,8 +90,8 @@ fn test_multi_args() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
-            files: vec!["file".to_string()],
+            level: "1".to_owned(),
+            files: vec!["file".to_owned()],
             values: vec![],
         },
         Opt::try_parse_from(["test", "-l", "1", "file"]).unwrap()
@@ -99,8 +99,8 @@ fn test_multi_args() {
     assert_eq!(
         Opt {
             x: 0,
-            level: "1".to_string(),
-            files: vec!["FILE".to_string()],
+            level: "1".to_owned(),
+            files: vec!["FILE".to_owned()],
             values: vec![1],
         },
         Opt::try_parse_from(["test", "-l", "1", "--values", "1", "--", "FILE"]).unwrap()
@@ -118,7 +118,7 @@ fn test_bool() {
     assert_eq!(
         Opt {
             x: 1,
-            level: "1".to_string(),
+            level: "1".to_owned(),
             files: vec![],
             values: vec![],
         },
