@@ -34,7 +34,7 @@ bench = false
 
 [[example]]
 name = "man"
-required-features = ["man"]
+required-features = ["env"]
 doc-scrape-examples = true
 
 [dependencies]
