@@ -183,8 +183,8 @@ fn subcommands_of(p: &Command) -> String {
     // We need this to prevent weirdly formatted `command=(\n        \n)` sections.
     // When there are no (sub-)commands.
     if !segments.is_empty() {
-        segments.insert(0, "".to_string());
-        segments.push("    ".to_string());
+        segments.insert(0, "".to_owned());
+        segments.push("    ".to_owned());
     }
 
     segments.join("\n")
@@ -421,7 +421,7 @@ fn value_completion(arg: &Arg) -> Option<String> {
                     return None;
                 }
             }
-            .to_string(),
+            .to_owned(),
         )
     }
 }
@@ -472,7 +472,7 @@ fn write_opts_of(p: &Command, p_global: Option<&Command>) -> String {
         };
 
         let vn = match o.get_value_names() {
-            None => " ".to_string(),
+            None => " ".to_owned(),
             Some(val) => val[0].to_string(),
         };
         let vc = match value_completion(o) {
@@ -661,7 +661,7 @@ fn write_positionals_of(p: &Command) -> String {
             help = arg
                 .get_help()
                 .map(|s| s.to_string())
-                .map(|v| " -- ".to_owned() + &v)
+                .map(|v| format!(" -- {v}"))
                 .unwrap_or_else(|| "".to_owned())
                 .replace('[', "\\[")
                 .replace(']', "\\]")

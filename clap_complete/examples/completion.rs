@@ -95,12 +95,7 @@ fn build_cli() -> Command {
 }
 
 fn print_completions<G: Generator>(generator: G, cmd: &mut Command) {
-    generate(
-        generator,
-        cmd,
-        cmd.get_name().to_string(),
-        &mut io::stdout(),
-    );
+    generate(generator, cmd, cmd.get_name().to_owned(), &mut io::stdout());
 }
 
 fn main() {

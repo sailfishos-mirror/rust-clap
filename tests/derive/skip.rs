@@ -146,7 +146,7 @@ fn skip_val() {
         Opt::try_parse_from(["test", "-n", "10"]).unwrap(),
         Opt {
             number: 10,
-            k: "key".to_string(),
+            k: "key".to_owned(),
             v: vec![1, 2, 3]
         }
     );

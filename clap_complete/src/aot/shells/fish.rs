@@ -276,7 +276,7 @@ fn gen_subcommand_helpers(
 
 fn value_completion(option: &Arg) -> String {
     if !option.get_num_args().expect("built").takes_values() {
-        return "".to_string();
+        return "".to_owned();
     }
 
     if let Some(data) = utils::possible_values(option) {
@@ -316,6 +316,6 @@ fn value_completion(option: &Arg) -> String {
             // Disable completion for others
             _ => " -r -f",
         }
-        .to_string()
+        .to_owned()
     }
 }

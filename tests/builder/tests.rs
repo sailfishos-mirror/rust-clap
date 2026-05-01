@@ -459,7 +459,7 @@ fn mut_subcommand_with_alias_resolve() {
         "test subcmd"
     );
 
-    let true_name = cmd.find_subcommand("baz").unwrap().get_name().to_string();
+    let true_name = cmd.find_subcommand("baz").unwrap().get_name().to_owned();
     assert_eq!(true_name, "bar");
 
     cmd = cmd.mut_subcommand(&*true_name, |subcmd| subcmd.about("modified about"));

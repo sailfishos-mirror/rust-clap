@@ -98,19 +98,15 @@ fn all_subcommands(cmd: &Command, parent_fn_name: &str) -> String {
         let fn_name = format!(
             "{parent_fn_name}{CMD_SEP}{cmd_name}",
             parent_fn_name = parent_fn_name,
-            cmd_name = cmd.get_name().to_string().replace('-', CMD_SEP)
+            cmd_name = cmd.get_name().to_owned().replace('-', CMD_SEP)
         );
         subcmds.push((
-            parent_fn_name.to_string(),
-            cmd.get_name().to_string(),
+            parent_fn_name.to_owned(),
+            cmd.get_name().to_owned(),
             fn_name.clone(),
         ));
         for alias in cmd.get_visible_aliases() {
-            subcmds.push((
-                parent_fn_name.to_string(),
-                alias.to_string(),
-                fn_name.clone(),
-            ));
+            subcmds.push((parent_fn_name.to_owned(), alias.to_owned(), fn_name.clone()));
         }
         for subcmd in cmd.get_subcommands() {
             add_command(&fn_name, subcmd, subcmds);
@@ -192,15 +188,15 @@ fn option_details_for_path(cmd: &Command, path: &str) -> String {
 
                 if o.get_value_hint() == ValueHint::FilePath {
                     v.extend([
-                        "local oldifs".to_string(),
-                        r#"if [ -n "${IFS+x}" ]; then"#.to_string(),
-                        r#"    oldifs="$IFS""#.to_string(),
-                        "fi".to_string(),
-                        r#"IFS=$'\n'"#.to_string(),
+                        "local oldifs".to_owned(),
+                        r#"if [ -n "${IFS+x}" ]; then"#.to_owned(),
+                        r#"    oldifs="$IFS""#.to_owned(),
+                        "fi".to_owned(),
+                        r#"IFS=$'\n'"#.to_owned(),
                         format!("COMPREPLY=({})", vals_for(o)),
-                        r#"if [ -n "${oldifs+x}" ]; then"#.to_string(),
-                        r#"    IFS="$oldifs""#.to_string(),
-                        "fi".to_string(),
+                        r#"if [ -n "${oldifs+x}" ]; then"#.to_owned(),
+                        r#"    IFS="$oldifs""#.to_owned(),
+                        "fi".to_owned(),
                     ]);
                 } else {
                     v.push(format!("COMPREPLY=({})", vals_for(o)));
@@ -208,13 +204,13 @@ fn option_details_for_path(cmd: &Command, path: &str) -> String {
 
                 if let Some(copt) = compopt {
                     v.extend([
-                        r#"if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then"#.to_string(),
+                        r#"if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then"#.to_owned(),
                         format!("    {copt}"),
-                        "fi".to_string(),
+                        "fi".to_owned(),
                     ]);
                 }
 
-                v.extend(["return 0", ";;"].iter().map(|s| (*s).to_string()));
+                v.extend(["return 0", ";;"].iter().map(|s| (*s).to_owned()));
                 v.join("\n                    ")
             }));
         }
@@ -225,15 +221,15 @@ fn option_details_for_path(cmd: &Command, path: &str) -> String {
 
                 if o.get_value_hint() == ValueHint::FilePath {
                     v.extend([
-                        "local oldifs".to_string(),
-                        r#"if [ -n "${IFS+x}" ]; then"#.to_string(),
-                        r#"    oldifs="$IFS""#.to_string(),
-                        "fi".to_string(),
-                        r#"IFS=$'\n'"#.to_string(),
+                        "local oldifs".to_owned(),
+                        r#"if [ -n "${IFS+x}" ]; then"#.to_owned(),
+                        r#"    oldifs="$IFS""#.to_owned(),
+                        "fi".to_owned(),
+                        r#"IFS=$'\n'"#.to_owned(),
                         format!("COMPREPLY=({})", vals_for(o)),
-                        r#"if [ -n "${oldifs+x}" ]; then"#.to_string(),
-                        r#"    IFS="$oldifs""#.to_string(),
-                        "fi".to_string(),
+                        r#"if [ -n "${oldifs+x}" ]; then"#.to_owned(),
+                        r#"    IFS="$oldifs""#.to_owned(),
+                        "fi".to_owned(),
                     ]);
                 } else {
                     v.push(format!("COMPREPLY=({})", vals_for(o)));
@@ -241,13 +237,13 @@ fn option_details_for_path(cmd: &Command, path: &str) -> String {
 
                 if let Some(copt) = compopt {
                     v.extend([
-                        r#"if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then"#.to_string(),
+                        r#"if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then"#.to_owned(),
                         format!("    {copt}"),
-                        "fi".to_string(),
+                        "fi".to_owned(),
                     ]);
                 }
 
-                v.extend(["return 0", ";;"].iter().map(|s| (*s).to_string()));
+                v.extend(["return 0", ";;"].iter().map(|s| (*s).to_owned()));
                 v.join("\n                    ")
             }));
         }

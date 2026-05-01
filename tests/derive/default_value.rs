@@ -110,8 +110,8 @@ fn default_values_t() {
             arg2: vec![4, 5, 6],
             arg3: vec![7, 8, 9],
             arg4: vec![10, 11, 12],
-            arg5: vec!["hello".to_string(), "world".to_string()],
-            arg6: vec!["foo".to_string(), "bar".to_string()],
+            arg5: vec!["hello".to_owned(), "world".to_owned()],
+            arg6: vec!["foo".to_owned(), "bar".to_owned()],
         },
         Opt::try_parse_from(["test"]).unwrap()
     );
@@ -121,8 +121,8 @@ fn default_values_t() {
             arg2: vec![4, 5, 6],
             arg3: vec![7, 8, 9],
             arg4: vec![10, 11, 12],
-            arg5: vec!["hello".to_string(), "world".to_string()],
-            arg6: vec!["foo".to_string(), "bar".to_string()],
+            arg5: vec!["hello".to_owned(), "world".to_owned()],
+            arg6: vec!["foo".to_owned(), "bar".to_owned()],
         },
         Opt::try_parse_from(["test", "1"]).unwrap()
     );
@@ -132,8 +132,8 @@ fn default_values_t() {
             arg2: vec![4, 5, 6],
             arg3: vec![7, 8, 9],
             arg4: vec![42, 15],
-            arg5: vec!["baz".to_string()],
-            arg6: vec!["foo".to_string(), "bar".to_string()],
+            arg5: vec!["baz".to_owned()],
+            arg6: vec!["foo".to_owned(), "bar".to_owned()],
         },
         Opt::try_parse_from(["test", "--arg4", "42", "--arg4", "15", "--arg5", "baz"]).unwrap()
     );

@@ -51,14 +51,14 @@ pub fn subcommands(p: &Command) -> Vec<(String, String)> {
             sc.get_name(),
             sc_bin_name
         );
-        subcmds.push((sc.get_name().to_string(), sc_bin_name.to_string()));
+        subcmds.push((sc.get_name().to_owned(), sc_bin_name.to_owned()));
 
         for alias in sc.get_visible_aliases() {
             debug!(
                 "subcommands:iter: alias={}, bin_name={}",
                 alias, sc_bin_name
             );
-            subcmds.push((alias.to_string(), sc_bin_name.to_string()));
+            subcmds.push((alias.to_owned(), sc_bin_name.to_owned()));
         }
     }
 
@@ -103,12 +103,12 @@ pub fn longs_and_visible_aliases(p: &Command) -> Vec<String> {
                         .get_visible_aliases()
                         .unwrap()
                         .into_iter()
-                        .map(|s| s.to_string())
+                        .map(|s| s.to_owned())
                         .collect();
-                    visible_aliases.push(a.get_long().unwrap().to_string());
+                    visible_aliases.push(a.get_long().unwrap().to_owned());
                     Some(visible_aliases)
                 } else if a.get_visible_aliases().is_none() && a.get_long().is_some() {
-                    Some(vec![a.get_long().unwrap().to_string()])
+                    Some(vec![a.get_long().unwrap().to_owned()])
                 } else {
                     None
                 }
@@ -185,9 +185,9 @@ mod tests {
         assert_eq!(
             subcommands(&cmd),
             vec![
-                ("test".to_string(), "my-cmd test".to_string()),
-                ("hello".to_string(), "my-cmd hello".to_string()),
-                ("help".to_string(), "my-cmd help".to_string()),
+                ("test".to_owned(), "my-cmd test".to_owned()),
+                ("hello".to_owned(), "my-cmd hello".to_owned()),
+                ("help".to_owned(), "my-cmd help".to_owned()),
             ]
         );
     }
@@ -199,17 +199,17 @@ mod tests {
         assert_eq!(
             all_subcommands(&cmd),
             vec![
-                ("test".to_string(), "my-cmd test".to_string()),
-                ("hello".to_string(), "my-cmd hello".to_string()),
-                ("help".to_string(), "my-cmd help".to_string()),
-                ("config".to_string(), "my-cmd test config".to_string()),
-                ("help".to_string(), "my-cmd test help".to_string()),
-                ("config".to_string(), "my-cmd test help config".to_string()),
-                ("help".to_string(), "my-cmd test help help".to_string()),
-                ("test".to_string(), "my-cmd help test".to_string()),
-                ("hello".to_string(), "my-cmd help hello".to_string()),
-                ("help".to_string(), "my-cmd help help".to_string()),
-                ("config".to_string(), "my-cmd help test config".to_string()),
+                ("test".to_owned(), "my-cmd test".to_owned()),
+                ("hello".to_owned(), "my-cmd hello".to_owned()),
+                ("help".to_owned(), "my-cmd help".to_owned()),
+                ("config".to_owned(), "my-cmd test config".to_owned()),
+                ("help".to_owned(), "my-cmd test help".to_owned()),
+                ("config".to_owned(), "my-cmd test help config".to_owned()),
+                ("help".to_owned(), "my-cmd test help help".to_owned()),
+                ("test".to_owned(), "my-cmd help test".to_owned()),
+                ("hello".to_owned(), "my-cmd help hello".to_owned()),
+                ("help".to_owned(), "my-cmd help help".to_owned()),
+                ("config".to_owned(), "my-cmd help test config".to_owned()),
             ]
         );
     }

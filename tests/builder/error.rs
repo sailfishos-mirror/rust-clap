@@ -232,7 +232,7 @@ For more information, try '--help'.
     assert!(err
         .insert(
             ContextKind::SuggestedArg,
-            ContextValue::String("--bar".to_string())
+            ContextValue::String("--bar".to_owned())
         )
         .is_none());
     let edited_message = str![[r#"

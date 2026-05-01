@@ -23,7 +23,7 @@ fn print_completions<G: Generator>(generator: G, cmd: &mut clap::Command) {
     generate(
         generator,
         cmd,
-        cmd.get_name().to_string(),
+        cmd.get_name().to_owned(),
         &mut std::io::stdout(),
     );
 }
